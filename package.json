@@ -33,13 +33,16 @@
     "recharts": "^2.9.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
+    "uniqid": "^5.4.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uniqid": "^5.3.3",
     "autoprefixer": "^10",
+    "daisyui": "^3.9.3",
     "postcss": "^8",
     "supabase": "^1.106.1",
     "tailwindcss": "^3",

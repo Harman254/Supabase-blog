@@ -29,7 +29,7 @@ export default function RootLayout({
 
         >
           <body className={`${inter.className} bg-muted`}>
-            <div className='flex flex-col container'>
+            <div className='flex flex-col container bg-muted'>
               <Navbar />
               <Toaster />
               {children}
