@@ -13,7 +13,7 @@ const AccountPage = () => {
     console.log(session)
     if(!session) router.push("/getstarted")
   return (
-    <div className='container mx-auto flex flex-col'>
+    <div className='container mx-auto flex flex-col min-h-screen'>
         <AccountForm session={session} />
 
     </div>

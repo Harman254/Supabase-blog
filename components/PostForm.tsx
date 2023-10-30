@@ -18,6 +18,8 @@ import { Input } from "@/components/ui/input"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Database } from "@/types"
 import { toast } from "./ui/use-toast"
+import { useSession } from "@supabase/auth-helpers-react"
+import { Textarea } from "./ui/textarea"
 
 const PostSchema = z.object({
     image: z.string(),
@@ -29,10 +31,12 @@ const PostSchema = z.object({
     }),
     author: z.string().min(2, {
         message: "Author must be at least 2 characters"
-    })
+    }),
+    user_id: z.string()
 })
 
 const PostForm = () => {
+    const session = useSession()
     const [loading, setLoading] = useState(false)
     const [uploadingImage, setIsUploadingImage] = useState(false);
     const [imageUrl, setImageUrl] = useState("")
@@ -43,7 +47,9 @@ const PostForm = () => {
             image: "",
             title: "",
             description: "",
-            author: ""
+            author: "",
+            user_id: session?.user?.id
+
 
         }
     })
@@ -56,7 +62,8 @@ const PostForm = () => {
             image: imageUrl || "",
             title: data.title,
             description: data.description,
-            author: data.author
+            author: data.author,
+            user_id: session?.user?.id
         })
         setLoading(false)
 
@@ -114,6 +121,7 @@ const PostForm = () => {
 
 
     return (
+        <div className="flex justify-center min-h-screen">
         <Form {...Post}>
             <form onSubmit={Post.handleSubmit(onSubmit)} className="space-y-8  flex flex-col mt-5 w-[600px]">
                 <FormField
@@ -143,7 +151,7 @@ const PostForm = () => {
                         <FormItem>
                             <FormLabel>Title</FormLabel>
                             <FormControl>
-                                <Input placeholder="content title" {...field} />
+                                <Textarea placeholder="content title" {...field} />
                             </FormControl>
 
                         </FormItem>
@@ -157,7 +165,7 @@ const PostForm = () => {
                         <FormItem>
                             <FormLabel>Description</FormLabel>
                             <FormControl>
-                                <Input placeholder="content description" {...field} />
+                                <Textarea placeholder="Type your message here." {...field} />
 
                             </FormControl>
                         </FormItem>
@@ -184,6 +192,7 @@ const PostForm = () => {
                 </div>
             </form>
         </Form>
+        </div>
     )
 }
 

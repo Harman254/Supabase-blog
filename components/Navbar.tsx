@@ -15,9 +15,9 @@ type Props = {}
 
 const items = [
     { label: 'Home', url: '/' },
-    { label: 'About', url: '/about' },
-    { label: 'Services', url: '/Services' },
+    { label: 'Trending', url: '/trending' },
     { label: 'Account', url: '/account' },
+    { label: 'Dashboard', url: '/dashboard' },
 ];
 
 const Navbar = () => {
@@ -27,6 +27,7 @@ const supabase = createClientComponentClient<Database>()
 
 
 const session = useSession()
+if(!session) null
 
 const handleSignout = async () => {
     await supabase.auth.signOut()

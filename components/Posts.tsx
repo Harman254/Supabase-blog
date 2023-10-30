@@ -15,10 +15,9 @@ const Posts = async () => {
     .from('posts')
     .select("*")
 
-    console.log(posts)
     if(error) console.log(error)
   return (
-    <div className='flex container p-4 space-x-3'>
+    <div className='grid grid-cols-2 container p-4 space-x-3'>
       { posts?.map((post) => (
           <PostCard key={post.id} post={post} />
       ))}
