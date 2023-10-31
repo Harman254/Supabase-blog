@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 
 
 
-const DashboardPage = async () => {
+const DashboardPage =  () => {
     const session = useSession()
     const router = useRouter()
 

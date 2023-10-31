@@ -20,6 +20,8 @@ import { Database } from "@/types"
 import { toast } from "./ui/use-toast"
 import { useSession } from "@supabase/auth-helpers-react"
 import { Textarea } from "./ui/textarea"
+import { revalidatePath } from "next/cache"
+import { useRouter } from "next/navigation"
 
 const PostSchema = z.object({
     image: z.string(),
@@ -41,6 +43,7 @@ const PostForm = () => {
     const [uploadingImage, setIsUploadingImage] = useState(false);
     const [imageUrl, setImageUrl] = useState("")
     const supabase = createClientComponentClient<Database>()
+    const router = useRouter()
     const Post = useForm<z.infer<typeof PostSchema>>({
         resolver: zodResolver(PostSchema),
         defaultValues: {
@@ -82,6 +85,8 @@ const PostForm = () => {
         }
 
         Post.reset()
+        revalidatePath("/trending")
+        router.push("/trending")
     }
 
     

@@ -2,8 +2,6 @@
 import React from 'react'
 import Image from "next/image";
 import Link from 'next/link';
-import { useState, useEffect } from "react"
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
   Card,
   CardContent,
@@ -12,8 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Database } from '@/types';
-import { toast } from './ui/use-toast';
 interface Post {
   id: string;
   created_at: string;
@@ -30,34 +26,34 @@ type PostCardProps = {
 
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-  const supabase = createClientComponentClient<Database>();
-  console.log(post.image)
 
-  
-  
+
+
   return (
-    <div className="rounded-md border w-1/2 shadow-md overflow-hidden">
-        <Link href={`/trending/${post.id}`}>
-        <div className="flex">
-          <Image
-            className="w-1/2 rounded-md"
-            objectFit="cover"
-            quality={100}
-            width={150}
-            height={100}
-            src={post.image}
-            alt={post.title}
-          />
-          <div className="p-4">
-            <h2 className="text-3xl font-semibold mb-2">{post.title}</h2>
-            <p className="text-accent-foreground">{post.author}</p>
-            <p className="text-xl font-semibold text-wrap">
-              {post.description.slice(0, 100) + "..."}
-            </p>
-          </div>
-        </div>
-    </Link>
-      </div>
+   
+    <Card className="py-4 h-2/3 overflow-hidden rounded-lg">
+         <Link href={`/trending/${post.id}`}>
+
+      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+        <p className="text-tiny uppercase font-bold text-primary">{post.author}</p>
+        <small className="text-default-500">{post.created_at}</small>
+        <h4 className="font-bold text-large text-primary">{post.title}</h4>
+      </CardHeader>
+      <CardContent className="py-2"> 
+        <Image
+          alt="Card background"
+          className="object-cover rounded-xl"
+          src={post.image}
+          height={270}
+          width={270}
+        />
+        <CardDescription className="text-accent-foreground text-base mt-3">{post.description.slice(0, 150)} ...</CardDescription>
+      </CardContent>
+   </Link>
+
+
+    </Card>
+
   );
 };
 

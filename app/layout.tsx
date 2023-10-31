@@ -5,6 +5,7 @@ import './globals.css'
 import SupabaseProvider from '@/providers/SupabaseProvider'
 import Navbar from '@/components/Navbar'
 import { ThemeProvider } from '@/providers/ThemeProvider'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,6 +34,7 @@ export default function RootLayout({
               <Navbar />
               <Toaster />
               {children}
+              <Footer />
             </div>
           </body>
         </ThemeProvider>

@@ -56,7 +56,7 @@ const handleSignout = async () => {
                             </>
 
                         ): (
-                            <Button onClick={() => router.push("/getstarted")}>Get Started</Button>
+                            <Button className='sm:hidden' onClick={() => router.push("/getstarted")}>Get Started</Button>
                         )}
                     </div>
                     
