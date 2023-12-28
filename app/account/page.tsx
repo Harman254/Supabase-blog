@@ -7,14 +7,14 @@ import AccountForm from '@/components/Account'
 type Props = {}
 
 const AccountPage = () => {
-    const session = useSession()
-    const router = useRouter()
+  const session = useSession()
+  const router = useRouter()
 
-    console.log(session)
-    if(!session) router.push("/getstarted")
+  console.log(session)
+  if (!session) router.push("/getstarted")
   return (
-    <div className='container mx-auto flex flex-col min-h-screen'>
-        <AccountForm session={session} />
+    <div className='container  mx-auto flex flex-col min-h-screen'>
+      <AccountForm session={session} />
 
     </div>
   )

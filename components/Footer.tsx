@@ -8,79 +8,47 @@ import Image from "next/image"
 
 export default function Footer() {
   return (
-    <footer className="bg-muted border text-foreground ">
-      <div
-        className="
-        container
-        flex flex-col flex-wrap
-        px-4
-        py-16
-        mx-auto
-        md:items-center
-        lg:items-start
-        md:flex-row md:flex-nowrap
-      "
-      >
-        <div className="flex-shrink-0 w-1/2 mx-auto text-center md:mx-0 md:text-left mr-5">
-          <Link href={"/"} className="text-2xl flex items-start space-x-4">
-            <Image src="/logo.png" alt="logo" width={75} height={75} />
-            <h1 className=" tracking-tight text-accent-foreground font-bold text-2xl">OutWear</h1>
+    <footer className=" rounded-lg shadow w-full m-4">
+      <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div className="sm:flex sm:items-center sm:justify-between">
+          <a href="/" className="flex items-center mb-4 sm:mb-0">
+            <Image src="/logo.png" alt="logo" width={50} height={50} />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap ml-2">
+              Outwear
+            </span>
+          </a>
+          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                Licensing
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+        <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+        <span className="block text-sm text-gray-500 sm:text-center ">
+          © {new Date().getFullYear()}{" "}
+          <Link href="/" className="hover:underline">
+            Outwear™
           </Link>
-          <p className="mt-2 text-xl font-semibold text-justify text-muted">
-            In a fast moving world, we believe we should be dressing way better than we actually are, and we are hear to share those fantastic fashion stories together.
-          </p>
-          <div className="flex mt-4 space-x-3">
-            <Input type="email" placeholder="Email" />
-            <Button  variant="destructive">Subscribe</Button>
-          </div>
-          <div className="flex justify-center mt-4 space-x-4 lg:mt-2">
-            <Link href={""}>
-              <Facebook className="text-blue-500" />
-            </Link>
-            <Link href={""}>
-              <Twitter className="text-sky-300" />
-            </Link>
-            <Link href={""}>
-              <Instagram className="text-pink-500" />
-            </Link>
-            <Link href={""}>
-              <Linkedin className="text-blue-400" />
-            </Link>
-          </div>
-        </div>
-        <div className="justify-between flex-grow mt-4 text-center lg:flex">
-          <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-            <h2 className="mb-2 font-bold tracking-widest ">
-              Company
-            </h2>
-            <ul className="mb-8 space-y-2 flex flex-col">
-              <li>
-                <Link href={"/dashboard"} >
-                  Dashboard
-                </Link>
-              </li>
-              <li>
-                <Link href={"/about"} >
-                  Legal policies
-                </Link>
-              </li>
-              <li>
-                <Link href={"/careers"} >
-                  Careers and recruitment
-                </Link>
-              </li>
-              
-            </ul>
-          </div>
-          <div className="flex justify-center mt-12">
-        <p className="text-center text-foreground">
-          @2024 All rights reserved by your website.
-        </p>
+          All Rights Reserved.
+        </span>
       </div>
-          
-        </div>
-      </div>
-      
     </footer>
   )
 }

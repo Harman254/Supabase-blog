@@ -13,20 +13,20 @@ interface Post {
   author: string;
 }
 
-const TrendsPage = async() => {
-  const supabase = createServerComponentClient<Database>({ cookies})
+const TrendsPage = async () => {
+  const supabase = createServerComponentClient<Database>({ cookies })
 
-   const {data: trendingPosts} = await supabase.from("posts").select("*").order("created_at", { ascending: false})
+  const { data: trendingPosts } = await supabase.from("posts").select("*").order("created_at", { ascending: false })
 
 
   return (
     <div className=' bg-muted'>
-      <div className='mt-12 pt-12 font-xl container min-h-screen space-y-4 grid grid-cols-3 space-x-4 mx-auto'>
-      {trendingPosts?.map(( post: Post) => (
-        <PostCard post={post} key={post.id}/>
-      ))}
+      <div className=' container min-h-screen space-y-5 flex mt-20 py-5 flex-col lg:flex-row lg:justify-between flex-wrap space-x-4 mx-auto'>
+        {trendingPosts?.map((post: Post) => (
+          <PostCard post={post} key={post.id} />
+        ))}
 
-    </div>
+      </div>
     </div>
   )
 }
